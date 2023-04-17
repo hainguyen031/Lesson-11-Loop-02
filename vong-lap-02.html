@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện tập vòng lặp 02</title>
+</head>
+<body>
+    <p>Bài 1: In dãy Fibonaci</p>
+    <button type="button" onclick="bai1()">Bài 1</button>
+    <hr>
+
+    <p>Bài 2: Tính giai thừa của một số nguyên dương</p>
+    <label for="giaithua">Nhập số giai thừa bạn muốn tính: </label>
+    <input type="number" id="giaithua">
+    <button type="button" onclick="bai2()">Tính</button>
+    <p id="result2">Kết quả:</p>
+    <hr>
+
+
+    <p>Bài 3: In tam giác vuông. Các góc vuông nằm ở các vị trí khác nhau</p>
+    <button type="button" onclick="bai3()">Bài 3</button>
+    <hr>
+
+    <p>Bài 4: In hình chữ nhật</p>
+    <button type="button" onclick="bai4()">Bài 4</button>
+    <p id="result4"></p>
+    <hr>
+
+    <p>Bài 5: Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lại con) khi biết số tiền ban đầu, số tháng cho vay và lãi xuất hàng tháng.</p>
+    <label for="a5">Nhập số tiền vay (VNĐ) </label> <input type="number" id="a5"> <br> <br>
+    <label for="b5">Nhập số tháng vay (tháng)</label> <input type="number" id="b5"> <br> <br>
+    <label for="c5">Nhập lãi xuất vay (%)</label> <input type="number" id="c5">
+    <button type="button" onclick="bai5()">Tính</button>
+    <p id="result5">Result: </p>
+    <hr>
+
+    <p>Bài 6: In hình trái tim</p>
+    <!-- chưa làm được -->
+
+    <script>
+        //Bai 1
+        function bai1() {
+            let a = 0;
+            let b = 1;
+            for (let i=0; i<20; i++) {
+                console.log(a);
+                let c = a + b;
+                a = b;
+                b = c;
+            }
+        }
+
+        //Bai 2
+        
+        function bai2() {
+            let num = document.getElementById('giaithua').value;
+            let x = 1;
+            for (let i=2; i <= num; i++) {
+                x *= i;
+            }
+            document.getElementById('result2').innerHTML="Kết quả: " +x ;
+        }
+
+        //Bai 3
+        function bai3() {
+            for (let i = 1; i <= 5; i++) {
+                let row = '';
+                for (let j = 1; j <= i; j++) {
+                    row += '*';
+                }
+                console.log(row);
+            }
+            
+            for (let i = 5; i >= 1; i --) {
+                let row = '';
+                for (let j = 1; j <= i; j++) {
+                    row += '*';
+                }
+                console.log(row);
+            }
+
+            for (let i = 1; i <= 5; i++) {
+                let row = '';
+                for (let j = 1; j <= 5 - i; j++) {
+                    row += ' ';
+                }
+                for (let k = 1; k <= i; k++) {
+                    row += '*';
+                }
+                console.log(row);
+            }
+
+            for (let i = 5; i >=1; i--) {
+                let row = '';
+                for (let j = 1; j <= 5 - i; j++) {
+                    row += ' ';
+                }
+                for (let k = 1; k <= i; k++ ) {
+                    row += '*';
+                }
+                console.log(row);
+            }
+        }
+
+        //Bai 4
+        // function bai4() {
+        //     let res = document.getElementById("result4").value;
+        //     function printRactangle(w,h) {
+        //     let result = '';
+        //     let res = document.getElementById("result4");
+        //     for (let i = 0; i<=h; i++) {
+        //         for ( let j = 0; j<=w; j++) {
+        //             if ( i == 0 || i == h ) {
+        //                 result += '*';
+        //             } else {
+        //                 if ( j == 0 || j == w) {
+        //                     result += '*';
+        //                 } else {
+        //                     result += '&nbsp&nbsp;';
+        //                 }
+        //             }
+
+        //         }         
+        //         result += '<br/>'
+        //     }
+        //     res.innerHTML = result;
+        // }
+        // printRactangle(8,5);
+        // }
+
+        function bai4() {
+            let w = +prompt('Nhập chiều dài hcn');
+            let h = +prompt('Nhập chiều rộng hcn');
+            let row = '';
+            for (let i = 0; i <= h; i++) {
+                for ( let j = 0; j <= w; j++) {
+                    if ( i == 0 || i == h ) {
+                        row += '*';
+                    } else if ( j == 0 || j == w) {
+                            row += '*';
+                        } else {
+                            row += ' ';
+                        }
+                    }
+                }         
+                
+            
+            console.log(row);
+        }
+        
+        //Bai 5
+        function bai5() {
+            let tienVay = document.getElementById('a5').value;
+            let thangVay = document.getElementById('b5').value;
+            let laiXuat = document.getElementById('c5').value;
+            let c = 0;
+            if (isNaN(tienVay) || isNaN(thangVay) || isNaN(laiXuat)) {
+                document.getElementById('result5').innerHTML=('Dữ liệu lỗi');
+            } else {
+                c = tienVay *Math.pow((1 + laiXuat),thangVay) ;
+            }
+            document.getElementById('result5').innerHTML=('Tổng tiền phải trả: '+ c);
+            
+        }
+
+        //Bai 6
+        
+    </script>
+</body>
+</html>
