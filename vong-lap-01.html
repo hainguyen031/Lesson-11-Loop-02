@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện tập vòng lặp 01</title>
+</head>
+<body>
+    <p>Bài 1: Sử dụng vòng lặp để đếm từ 1 đến 100. Khi số là 99, hiển thị hộp thoại thông báo là đã hoàn thành.</p>
+    <button type="button" onclick="bai1()">Bài 1</button>
+    <hr>
+
+    <p>Bài 2: Sử dụng hàm prompt() để lấy thông tin nhiệt độ hiện tại được nhập bởi người truy cập. Nếu nhiệt độ nhập vào trên 100, yêu cầu người dùng giảm nhiệt độ. Nếu nhiệt độ dưới 20, yêu cầu người dùng tăng nhiệt độ.</p>
+    <button type="button" onclick="bai2()">Bài 2</button>
+    <hr>
+
+    <p>Bài 3: Hiển thị ra 20 số trong dãy fibonacci đầu tiên.</p>
+    <button type="button" onclick="bai3()">Bài 3</button>
+    <hr>
+
+    <p>Bài 4: Tìm số đầu tiên trong dãy fibonacci chia hết cho 5.</p>
+    <button type="button" onclick="bai4()">Bài 4</button>
+    <hr>
+
+    <p>Bài 5: Tính tổng của 20 số đầu tiên trong dãy fibonacci.</p>
+    <button type="button" onclick="bai5()">Bài 5</button>
+    <hr>
+    
+    <p>Bài 6: Tính tổng của 30 số chia hết cho 7 đầu tiên trong các số tự nhiên.</p>
+    <button type="button" onclick="bai6()">Bài 6</button>
+    <hr>
+    
+    <p>Bài 7: Hãy viết một chương trình in ra các số từ 1 đến 100. Nhưng nếu số chia hết cho 3 thì in ra "Fizz", 5 thì in ra "Buzz" thay vì in ra số đó. Và nếu số đó chia hết cho cả 3 và 5 thì in ra chữ "FizzBuzz".</p>
+    <button type="button" onclick="bai7()">Bài 7</button>
+    <hr>
+
+    <p>Bài 8: Game đoán số</p>
+    <button type="button" onclick="bai8()">Let's play</button>
+    <hr>
+
+    
+
+    <script>
+        //Bai 1
+        function bai1() {
+            for (let i = 1; i <= 100; i++) {
+            console.log(i);
+            if (i === 99) {
+                alert("Đã hoàn thành!");
+            }
+        }
+        }
+
+        //Bai 2
+        function bai2() {
+            let nhietDo = prompt('Nhập nhiệt độ hiện tại:');
+            if (nhietDo > 100) {
+                alert('Hãy giảm nhiệt độ');
+            } else if (nhietDo < 20) {
+                alert('Hãy tăng nhiệt đọ');
+            } else {
+                alert('Nhiệt độ bình thường');
+            }
+        }
+
+        //Bai 3
+        function bai3() {
+            let a = 0;
+            let b = 1;
+            let fibo = [];
+            for (let i = 0; i < 20; i++) {
+                fibo.push(a);
+                var c = a + b;
+                a = b;
+                b = c;
+            }
+            console.log(fibo);
+        }
+
+        //Bai 4
+        function bai4() {
+            let a = 0;
+            let b = 1;
+            let c = a + b;
+
+            while (true) {
+                if (c % 5 === 0) {
+                    alert('c = ' +c+ ' là số đầu tiên trong dãy Fibonacci chia hết cho 5');
+                    return;
+                }
+                a = b;
+                b = c;
+                c = a + b;
+            }
+        }
+
+        //Bai 5
+        function bai5() {
+            let a = 0;
+            let b = 1;
+            let sum = 0;
+            for (let i = 1; i <= 20; i++) {
+                let c = a + b;
+                a = b;
+                b = c;
+                sum += a;
+            }
+            alert(sum);
+        }
+
+        //Bai 6
+        function bai6() {
+            let count = 0;
+            let a = 1;
+            let sum = 0;
+            while (count < 30) {
+                if (a % 7 === 0) {
+                    sum += a;
+                    count++;
+                }
+                a++;
+            }
+            alert(sum);
+        }
+
+        //Bai 7
+
+    function bai7() {
+        for (let i = 1; i <= 100; i++) {
+            if (i % 3 === 0) {
+                console.log('Fizz');
+            } else if (i % 5 === 0) {
+                console.log('Buzz');
+            } else if (i % 3 === 0 && i % 5 === 0) {
+                console.log('FizzBuzz');
+            } else {
+                console.log(i);
+            }
+        }
+    }
+
+        //Bai 8
+        function bai8() {
+            let number = +prompt('Nhập số đoán trong khoảng lớn nhất');
+            let num_ran = Math.floor(Math.random()*number);
+            // console.log(num_ran);
+            let num_check = +prompt('Nhập số bạn đoán');
+            let count = 0;
+            while (num_check != num_ran) {
+                count++
+                if (count == 4) {
+                    alert('Bạn đã hết lượt đoán');
+                    break;
+                } else if (num_check > num_ran) {
+                    alert('Số bạn đoán lớn hơn');
+                } else {
+                    alert('Số bạn đoán nhỏ hơn');
+                }
+                num_check = +prompt('Nhập số bạn đoán');
+            }
+            if (count == 4) {
+                alert('Bạn đã hết lượt đoán');
+            } else {
+                alert('Bạn đoán trúng rồiiiii');
+            }
+        }
+    </script>
+</body>
+</html>
